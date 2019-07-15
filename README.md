@@ -6,9 +6,10 @@ This README would normally document whatever steps are necessary to get your app
 
 WordPress plugin "Refresh Page after user inactivity"
 
-To do (wish list)
-1. I would like to add field so user can define ammount of seconds (or miliseconds in this case) before refresh occures
-2. add ability to execute "Refresh Page" only on choosen PAGE or POST, not on every page
+To do (wish list):
+
+I would like to add field so user can define ammount of seconds (or miliseconds in this case) before refresh occures
+add ability to execute "Refresh Page" only on choosen PAGE or POST, not on every page
 
 
 * Quick summary
