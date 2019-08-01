@@ -6,25 +6,10 @@
 * Author: BJ
 **/
 
-function dev_auto_refresh_page_after_inactivity(){
+if(!defined('ABSPATH')) exit;
+define('BJ_PLUGIN_PATH', plugin_dir_path( __FILE__ ));
+define('BJ_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 
-	echo '<script>
+require_once BJ_PLUGIN_PATH . 'src/classes/class-bj-bootstrap.php';
 
-	     var time = new Date().getTime();
-	     jQuery(document.body).bind("mousemove keypress", function(e) {
-	         time = new Date().getTime();
-	     });
-
-	     function refresh() {
-	         if(new Date().getTime() - time >= 60000)
-	             window.location.reload(true);
-	         else
-	             setTimeout(refresh, 10000);
-	     }
-
-	     setTimeout(refresh, 10000);
-
-	</script>';
-
-}
-add_action('wp_footer','dev_auto_refresh_page_after_inactivity', 99);
+new BJ_Bootstrap;
