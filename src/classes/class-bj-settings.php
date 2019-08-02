@@ -17,7 +17,7 @@ class BJ_Settings
             'BJ Refresh', 
             'BJ Refresh page settings', 
             'manage_options', 
-            'bj-refresh-settings.php', 
+            BJ_PLUGIN_MENU_SLUG, 
             [$this, 'page_html']
         );
     }
@@ -39,7 +39,7 @@ class BJ_Settings
         if(!(isset($_POST['bj-refresh-settings-wpnonce']) && wp_verify_nonce($_POST['bj-refresh-settings-wpnonce'], 'bj-refresh-settings'))) {
             wp_die('Invalid nonce specified', 'Error', array(
                 'response' 	=> 403,
-                'back_link' => 'tools.php?page=bj-refresh-settings.php',
+                'back_link' => 'tools.php?page=' . BJ_PLUGIN_MENU_SLUG,
             ));
         }
 
@@ -53,7 +53,7 @@ class BJ_Settings
 
         update_option('bj_refresh_settings', $update);
 
-        $url = site_url( 'wp-admin/tools.php?page=bj-refresh-settings.php' );
+        $url = esc_url(get_admin_url(null, 'tools.php?page=' . BJ_PLUGIN_MENU_SLUG));
         wp_safe_redirect($url);
         exit;
     }

@@ -32,7 +32,7 @@ class BJ_Bootstrap
      */
     public function show_settings_link($links)
     {
-        $links[] = '<a href="'. esc_url(get_admin_url(null, 'tools.php?page=bj-refresh-settings.php')) .'">Settings</a>';
+        $links[] = '<a href="'. esc_url(get_admin_url(null, 'tools.php?page=' . BJ_PLUGIN_MENU_SLUG)) .'">Settings</a>';
         return $links;
     }
 
