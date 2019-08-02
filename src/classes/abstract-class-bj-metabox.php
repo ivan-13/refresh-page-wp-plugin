@@ -4,7 +4,14 @@ abstract class BJ_Metabox
 {
     public static function add()
     {
-        $screens = ['post', 'page'];
+        $args = [
+            'public'   => true,
+            '_builtin' => false,
+        ];
+        
+        $custom_post_types = get_post_types( $args ); 
+
+        $screens = array_merge(['post', 'page'], $custom_post_types);
         foreach ($screens as $screen) {
             add_meta_box(
                 'bj_refresh_page',
