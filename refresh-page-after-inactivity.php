@@ -1,7 +1,7 @@
 <?php
 /**
 * Plugin Name: Refresh Page After Inactivity
-* Description: This plugin will refresh page after 60 seconds of inactivity
+* Description: This plugin will refresh page after X seconds of inactivity
 * Version: 2019.07
 * Author: BJ
 **/
