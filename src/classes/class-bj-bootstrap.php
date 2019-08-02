@@ -6,9 +6,23 @@ class BJ_Bootstrap
 
     public function __construct()
     {
-        add_action('wp_enqueue_scripts', [$this, 'add_scripts']);
-        add_filter('plugin_action_links_' . BJ_PLUGIN_BASENAME, [$this, 'show_settings_link'], 10, 1);
-        $this->set_seconds();
+        add_filter( 'plugin_action_links_' . BJ_PLUGIN_BASENAME, [$this, 'show_settings_link'], 10, 1 );
+        add_action( 'wp', [$this, 'maybe_enqueue_scripts'] );
+    }
+
+    /**
+     * enqueue scripts only if it is enabled on the post or page edit screen
+     *
+     * @return void
+     */
+    public function maybe_enqueue_scripts()
+    {
+        global $wp_query;
+        $refresh = get_post_meta( $wp_query->post->ID, '_bj_refresh_page', true );
+        if(false !== $refresh && $refresh == 'on') {
+            $this->set_seconds();
+            add_action('wp_enqueue_scripts', [$this, 'add_scripts']);
+        }
     }
 
     /**
@@ -46,5 +60,4 @@ class BJ_Bootstrap
         $settings = get_option('bj_refresh_settings');
         $this->seconds = isset($settings['seconds']) ? (int) $settings['seconds'] * 1000 : 60000;
     }
-
 }

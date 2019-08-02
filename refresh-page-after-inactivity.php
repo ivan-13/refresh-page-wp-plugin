@@ -14,6 +14,7 @@ define('BJ_PLUGIN_MENU_SLUG', 'bj-refresh-settings');
 
 require_once BJ_PLUGIN_PATH . 'src/classes/class-bj-bootstrap.php';
 require_once BJ_PLUGIN_PATH . 'src/classes/class-bj-settings.php';
+require_once BJ_PLUGIN_PATH . 'src/classes/abstract-class-bj-metabox.php';
 
 new BJ_Bootstrap;
 new BJ_Settings;
