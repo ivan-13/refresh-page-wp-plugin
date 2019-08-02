@@ -46,9 +46,9 @@ class BJ_Settings
         $update = [];
 
         if(isset($_POST['seconds']) && !empty($_POST['seconds'])) {
-            $update['seconds'] = $_POST['seconds'];
+            $update['seconds'] = (int) $_POST['seconds'];
         } else {
-            $update['seconds'] = 60;
+            $update['seconds'] = isset($this->settings['seconds']) ? (int) $this->settings['seconds'] : 60;
         }
 
         update_option('bj_refresh_settings', $update);
